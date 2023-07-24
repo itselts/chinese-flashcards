@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const LevelUpButton = () => {
     // Styling
@@ -15,7 +15,7 @@ const LevelUpButton = () => {
     const [count, setCount] = useState(0);
 
     function handleClick() {
-        const newCount = count === 10 ? 0 : count + 1
+        const newCount = count === 9 ? 0 : count + 1
         setCount(newCount)
     }
     return <button style={buttonStyle} onClick={handleClick}> Level {count} </button>
