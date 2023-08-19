@@ -33,19 +33,26 @@
   }
 }
 
-.card {
-  padding: 2em;
+.center-container {
+  display: flex;
+  flex-direction: column; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  min-height: 70vh; /* Ensure container covers the entire viewport height */
 }
 
 .read-the-docs {
   color: #888;
 }
 
-.inter-tight-header {
+.header-style {
   font-family: 'Inter';
   color: #FFFFFF;
+  background-color: #21222A;
+  padding-left: 5px
 }
 
-.header-style {
-  background-color: #21222A
+.play-btn {
+  padding: 50px;
+  font-size: 15px;
 }

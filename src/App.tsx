@@ -1,32 +1,21 @@
-import zhongwen from '/zhong-wen.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import ImageBar from './components/ImageBar'
 import LevelUpButton from './components/LevelUpButton'
-
+import PlayButton from './components/PlayButton'
 
 function App() {
   return (
-    <>
-      <nav>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-        <a href="https://en.wikipedia.org/wiki/Xi_Jinping" target="_blank">
-          <img src={zhongwen} className='logo react' alt='ZhongWen' />
-        </a>
-      </nav>
-      <h1 className='inter-tight-header header-style'>Chinese Flashcards</h1>
-      <div className="card">
-        <LevelUpButton/>
+    <div className="center-container">
+      <ImageBar />
+      <h1 className='header-style'>Chinese Flashcards</h1>
+      <div>
+        <LevelUpButton />
       </div>
+      <PlayButton />
       <p className="read-the-docs">
         You suck at Chinese
       </p>
-    </>
+    </div>
   )
 }
 
