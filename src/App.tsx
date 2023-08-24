@@ -1,20 +1,32 @@
 import './App.css'
+import {useState} from 'react'
 import ImageBar from './components/ImageBar'
 import LevelUpButton from './components/LevelUpButton'
 import PlayButton from './components/PlayButton'
+import Subtext from './components/Subtext'
 
 function App() {
+    // State to keep track of the count
+    const [count, setCount] = useState(1);
+
+    function handleClick() {
+        const newCount = count === 5 ? 1 : count + 1
+        setCount(newCount)
+    };
+
+    function handleReset() {
+        setCount(1)
+    };
+  
   return (
     <div className="center-container">
       <ImageBar />
       <h1 className='header-style'>Chinese Flashcards</h1>
       <div>
-        <LevelUpButton />
+        <LevelUpButton count={count} handleClick={handleClick} handleReset={handleReset}/>
       </div>
       <PlayButton />
-      <p className="read-the-docs">
-        You suck at Chinese
-      </p>
+      <Subtext count={count}/>
     </div>
   )
 }
