@@ -1,4 +1,8 @@
-export default function Subtext({count}) {
+interface SubtextProps{
+    count: number;
+}
+
+export default function Subtext({count}: SubtextProps) {
     let message;
 
     if (count === 1) {
