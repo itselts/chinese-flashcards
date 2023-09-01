@@ -1,11 +1,11 @@
-import './App.css'
+import '../App.css'
 import {useState} from 'react'
-import ImageBar from './components/ImageBar'
-import LevelUpButton from './components/LevelUpButton'
-import PlayButton from './components/PlayButton'
-import Subtext from './components/Subtext'
+import ImageBar from '../components/ImageBar'
+import LevelUpButton from '../components/LevelUpButton'
+import PlayButton from '../components/PlayButton'
+import Subtext from '../components/Subtext'
 
-function App() {
+export default function Root() {
     // State to keep track of the count
     const [count, setCount] = useState(1);
 
@@ -25,10 +25,8 @@ function App() {
       <div>
         <LevelUpButton count={count} handleClick={handleClick} handleReset={handleReset}/>
       </div>
-      <PlayButton />
+      <PlayButton Level={count.toString()} />
       <Subtext count={count}/>
     </div>
   )
 }
-
-export default App

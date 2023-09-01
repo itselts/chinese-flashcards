@@ -14,7 +14,7 @@ export default function Subtext({count}: SubtextProps) {
     } else if (count === 4) {
         message = "Respectable..."
     } else {
-        message = "Parents are proud..."
+        message = "Parents are proud!!"
     }
 
     return (
