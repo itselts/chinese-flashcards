@@ -1,0 +1,14 @@
+.card {
+    display: flex;
+    justify-content: center;
+}
+
+.form {
+    display: grid;
+}
+
+.form--input {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
