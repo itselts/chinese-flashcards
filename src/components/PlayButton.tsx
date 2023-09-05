@@ -7,7 +7,7 @@ interface PlayButtonProps {
 export default function PlayButton({Level}: PlayButtonProps) {
     return (
         <Link to={`/chinese-flashcards/play/${Level}`}>
-            <button type="button" className="btn btn-danger" style={{marginTop: '10px'}}>Play</button>
+            <button type="button" className="btn btn-danger">Play</button>
         </Link>
         
     )

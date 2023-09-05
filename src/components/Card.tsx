@@ -1,22 +1,31 @@
-import '../styles.css'
+import '../styles.css';
+import characters from '../characters.ts'
 
 export default function Card() {
+
+    function handleHint() {
+        console.log('Hint!')
+    }
+
+    function handleSubmit() {
+        console.log('Submit!')
+    }
+
     return (
-        <div style={{width: "20rem"}}>
-            <div className="card-body">
-                <h5 className="card-title">CHINESE WORD</h5>
-                <form className="form">
-                    <div className="form--input">
-                        <p>Pin Yin</p>
-                        <input type='text' />
-                    </div>
-                    <div className='form--input'>
-                        <p>Tone</p>
-                        <input type='text' />
-                    </div>
-                </form>
-                <a href="" className="btn btn-primary">Submit</a>
-            </div>
+        <div className="card">
+            <h1 className="card-title">{characters[4][0].char}</h1>
+            <form className="form">
+                <div className="form--input">
+                    <p>Pin Yin</p>
+                    <input type='text'/>
+                </div>
+                <div className='form--input'>
+                    <p>Tone</p>
+                    <input type='text'/>
+                </div>
+            </form>
+            <button className="btn btn-secondary" onClick={handleHint}>Hint</button>
+            <button className="btn btn-primary" onClick={handleSubmit}>Submit</button>
         </div>
     )
 }

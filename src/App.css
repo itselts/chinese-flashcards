@@ -33,13 +33,6 @@
   }
 }
 
-.center-container {
-  display: flex;
-  flex-direction: column; /* Center vertically */
-  align-items: center; /* Center horizontally */
-  justify-content: center; /* Center vertically */
-  min-height: 70vh; /* Ensure container covers the entire viewport height */
-}
 
 .read-the-docs {
   color: #888;

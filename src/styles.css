@@ -1,6 +1,27 @@
-.card {
+h1 {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.h1--root {
+    background-color: aquamarine;
+}
+
+body {
     display: flex;
-    justify-content: center;
+    flex-direction: column; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    min-height: 70vh; /* Ensure container covers the entire viewport height */
+  }
+
+.card-title {
+    background-color: aquamarine;
+    height: 150px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 130px;
+    font-size: 100px;
 }
 
 .form {
@@ -8,7 +29,27 @@
 }
 
 .form--input {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
+    display: grid;
+    grid-template: 5px 5px / 0.5fr 0.5fr;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+input {
+    width: 100px;
+    height: 30px;
+}
+
+.btn {
+    margin: 5px;
+    border-radius: 10px;
+}
+
+.card {
+    width: 15rem
+}
+
+
+.score {
+    font-size: 20px;
 }

@@ -19,14 +19,14 @@ export default function Root() {
     };
   
   return (
-    <div className="center-container">
+    <body>
       <ImageBar />
-      <h1 className='header-style'>Chinese Flashcards</h1>
+      <h1 className='h1--root'>Chinese Flashcards</h1>
       <div>
         <LevelUpButton count={count} handleClick={handleClick} handleReset={handleReset}/>
       </div>
       <PlayButton Level={count.toString()} />
       <Subtext count={count}/>
-    </div>
+    </body>
   )
 }
