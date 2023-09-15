@@ -17,7 +17,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "chinese-flashcards/play/:Lvl",
+    path: "chinese-flashcards/play",
     element: <Play />,
   },
 ]);

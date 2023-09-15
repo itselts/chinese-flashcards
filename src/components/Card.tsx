@@ -1,7 +1,22 @@
 import '../styles.css';
-import characters from '../characters.ts'
 
-export default function Card() {
+interface CharDict {
+    char: string;
+    pinyin: string;
+    tone: number;
+  }
+interface CardProps {
+    charDict: CharDict; // Specify that the Level prop is a string
+  }
+
+export default function Card({ charDict }: CardProps) {
+    const char = charDict.char
+    const pinyin = charDict.pinyin
+    const tone = charDict.tone
+
+    console.log(char)
+    console.log(pinyin)
+    console.log(tone)
 
     function handleHint() {
         console.log('Hint!')
@@ -13,7 +28,7 @@ export default function Card() {
 
     return (
         <div className="card">
-            <h1 className="card-title">{characters[4][0].char}</h1>
+            <h1 className="card-title">{char}</h1>
             <form className="form">
                 <div className="form--input">
                     <p>Pin Yin</p>
