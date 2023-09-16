@@ -1,8 +1,9 @@
 import Card from '../components/Card';
-import Score from '../components/Score';
-import {Link, useLocation} from "react-router-dom";
-import characters from '../characters.ts'
+import { Link } from "react-router-dom";
 
+
+import {useLocation} from "react-router-dom";
+import characters from '../characters.ts'
 
 export default function Play() {
     const location = useLocation()
@@ -16,7 +17,6 @@ export default function Play() {
     return (
         <body>
             <Card charDict={levelChars[0]}/>
-            <Score/>
             <Link to={'/chinese-flashcards'} className="btn btn-danger">Home</Link>
         </body>
     )

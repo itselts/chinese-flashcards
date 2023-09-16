@@ -15,13 +15,22 @@ body {
     min-height: 70vh; /* Ensure container covers the entire viewport height */
   }
 
-.card-title {
+.card-title-char {
     background-color: aquamarine;
     height: 150px;
     text-align: center;
     vertical-align: middle;
     line-height: 130px;
     font-size: 100px;
+}
+
+.card-title-hint {
+    background-color: aquamarine;
+    height: 150px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 130px;
+    font-size: 30px;
 }
 
 .form {
@@ -36,8 +45,9 @@ body {
 }
 
 input {
-    width: 100px;
+    width: 80px;
     height: 30px;
+    text-align: center;
 }
 
 .btn {
