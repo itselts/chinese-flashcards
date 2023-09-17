@@ -3,34 +3,39 @@ import ReactCardFlip from "react-card-flip";
 import ConfettiExplosion from 'react-confetti-explosion';
 
 import '../styles.css';
-interface CharDict {
+
+interface charDict {
     char: string;
     pinyin: string;
     tone: string;
     hint: string;
   }
-interface CardProps {
-    charDict: CharDict; 
+  
+  interface CardProps {
+    levelChars: charDict[]; // Define the prop type
   }
 
-export default function Card({ charDict }: CardProps) {
-    const char = charDict.char
-    const pinyin = charDict.pinyin
-    const tone = charDict.tone
-    const hint = charDict.hint
-
+export default function Card({ levelChars }: CardProps) {
+    // States for the card
+    const [RandInt, setRandInt] = useState(Math.floor(Math.random() * levelChars.length))
+    const [charDictInstance, setCharDict] = useState(levelChars[RandInt])
     const [flip, setFlip] = useState(false);
     const [score, setScore] = useState(0)
     const [formData, setFormData] = useState({PinYinIn: "", ToneIn: ""})
     const [isSmallExploding, setIsSmallExploding] = useState(false);
 
+    console.log(RandInt)
+    console.log(levelChars)
+
+    // Small explosion props
     const smallProps = {
         force: 0.4,
         duration: 2200,
         particleCount: 30,
         width: 400,
       };
-
+    
+    // Event handler functions
     function handleHint() {
         if (flip === false) {
             console.log("Hint!")
@@ -42,17 +47,27 @@ export default function Card({ charDict }: CardProps) {
     }
 
     function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-        event.preventDefault()
-        if (formData.PinYinIn === pinyin && formData.ToneIn === tone) {
-            setScore(score+100)
-            setIsSmallExploding(true)
-        }
-        else {
-            console.log("Wrong!")
-        }
-        event.currentTarget.reset()
+        event.preventDefault();
+        if (formData.PinYinIn === charDictInstance.pinyin && formData.ToneIn === charDictInstance.tone) {
+          setScore(score + 100);
+          setIsSmallExploding(true);
+          levelChars.splice(RandInt, 1);
 
-    }
+          // Use the functional form of setState to ensure you're working with the latest state
+          setCharDict((prevCharDictInstance) => {
+            const RandInt = Math.floor(Math.random() * levelChars.length);
+            return levelChars[RandInt];
+          });
+      
+          setRandInt((prevRandInt) => {
+            const RandInt = Math.floor(Math.random() * levelChars.length);
+            return RandInt;
+          });
+        } else {
+          console.log("Wrong!");
+        }
+        event.currentTarget.reset();
+      }
 
     function handleChange(event: ChangeEvent<HTMLInputElement>) {
         setFormData(prevFormData => {
@@ -66,7 +81,7 @@ export default function Card({ charDict }: CardProps) {
         <div>
             <ReactCardFlip isFlipped={flip} flipDirection='horizontal'>
                 <div className="card">
-                    <h1 className="card-title-char">{char}</h1>
+                    <h1 className="card-title-char">{charDictInstance.char}</h1>
                     <form className="form" onSubmit={handleSubmit}>
                         <div className="form--input">
                             <p>Pin Yin</p>
@@ -82,7 +97,7 @@ export default function Card({ charDict }: CardProps) {
                 </div>
 
                 <div className="card">
-                    <h1 className="card-title-hint">{hint}</h1>
+                    <h1 className="card-title-hint">{charDictInstance.hint}</h1>
                         <form className="form" onSubmit={handleSubmit}>
                             <div className="form--input">
                                 <p>Pin Yin</p>

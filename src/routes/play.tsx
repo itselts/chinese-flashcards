@@ -11,13 +11,11 @@ export default function Play() {
 
     const level = parseInt(queryParams.get('level')!, 10)
     const levelChars = characters[level-1]
-    
-    console.log(levelChars[0])
 
     return (
-        <body>
-            <Card charDict={levelChars[0]}/>
+        <>
+            <Card levelChars={levelChars}/>
             <Link to={'/chinese-flashcards'} className="btn btn-danger">Home</Link>
-        </body>
+        </>
     )
 }
