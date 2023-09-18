@@ -59,7 +59,7 @@ export default function Card({ charDict, flip, isSmallExploding, onChange, onHin
                                 <input type='text' autoComplete="off" placeholder="Numeric" onChange={onChange} name="tone"/>
                             </div>
                         <button className="btn btn-secondary" type="button" onClick={onHint}>Back</button>
-                        <button className="btn btn-primary" type="submit">Submit</button>
+                        <button className="btn btn-primary" type="submit">Submit {isSmallExploding && <ConfettiExplosion {...smallProps} />}</button>
                         </form>
                 </div>
             </ReactCardFlip>

@@ -11,8 +11,9 @@ export default function Play() {
     
     // States for the parent play
     const [levelChars, setLevelChars] = useState(characters[level-1])
-    const [randInt, setRandInt] = useState(Math.floor(Math.random() * levelChars.length))
+    const [randInt, setRandInt] = useState(Math.floor(Math.random() * levelChars.length)) // DONT NEED THIS AS A STATE
     const [score, setScore] = useState(0)
+    const [error, setError] = useState(false)
     const navigate = useNavigate();
 
     // States for the child card
@@ -20,10 +21,6 @@ export default function Play() {
     const [flip, setFlip] = useState(false);
     const [formData, setFormData] = useState({pinyin: "", tone: ""})
     const [isSmallExploding, setIsSmallExploding] = useState(false);
-
-    console.log(levelChars)
-    console.log(randInt)
-    console.log(charDict)
 
     // Event handler functions
     function handleHint() {
@@ -36,30 +33,40 @@ export default function Play() {
         setFlip(!flip)
     }
 
+    console.log(levelChars)
+    console.log(charDict)
+
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
+        setIsSmallExploding(false)
         event.preventDefault();
+        
         if (formData.pinyin.toLowerCase() === charDict.pinyin && formData.tone === charDict.tone) {
             setIsSmallExploding(true);
             setScore(score+100)
-            levelChars.splice(randInt, 1);
-            if (levelChars.length === 0) {
-                setLevelChars(characters[level-1])
+            setLevelChars(levelChars.filter((_, i) => {return i !== randInt}))
+            console.log(levelChars)
+
+            if (levelChars.length === 1) {
                 navigate('/chinese-flashcards/congratulations'); // Redirect to root page
             }
 
-            // Use the functional form of setState to ensure you're working with the latest state
-            setRandInt(() => {
-                const RandInt = Math.floor(Math.random() * levelChars.length);
-                return RandInt;
-                });
-                setFormData({pinyin: "", tone: ""})
+            setRandInt(Math.floor(Math.random() * levelChars.length))
+            setCharDict(levelChars[randInt-1])
+            // // Use the functional form of setState to ensure you're working with the latest state
+            // setRandInt(() => {
+            //     const RandInt = Math.floor(Math.random() * levelChars.length);
+            //     return RandInt;
+            // });
             
-            setCharDict(() => {
-            const RandInt = Math.floor(Math.random() * levelChars.length);
-            return levelChars[RandInt];
-            });
+            
+            // setCharDict(() => {
+            // const RandInt = Math.floor(Math.random() * levelChars.length);
+            // return levelChars[RandInt];
+            // });
+
+            setFormData({pinyin: "", tone: ""})
         } else {
-            console.log("Wrong!");
+            setError(true);
         }
         event.currentTarget.reset();
         }
@@ -75,6 +82,7 @@ export default function Play() {
     return (
         <>
             <Card charDict={charDict} flip={flip} isSmallExploding={isSmallExploding} onChange={handleChange} onHint={handleHint} onSubmit={handleSubmit} />
+            {error && <p style={{ color: "red" }}>Incorrect answer. Try again.</p>}
             <Link to={'/chinese-flashcards'} className="btn btn-danger">Home</Link>
             <div className="score">Score = {score}</div>
         </>
