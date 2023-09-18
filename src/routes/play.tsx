@@ -40,7 +40,7 @@ export default function Play() {
 
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        if (formData.pinyin === charDict.pinyin && formData.tone === charDict.tone) {
+        if (formData.pinyin.toLowerCase() === charDict.pinyin && formData.tone === charDict.tone) {
             setIsSmallExploding(true);
             setScore(score+100)
             levelChars.splice(randInt, 1);
