@@ -50,13 +50,13 @@ export default function Play() {
             }
 
             // Use the functional form of setState to ensure you're working with the latest state
-            setRandInt((prevRandInt) => {
+            setRandInt(() => {
                 const RandInt = Math.floor(Math.random() * levelChars.length);
                 return RandInt;
                 });
                 setFormData({pinyin: "", tone: ""})
             
-            setCharDict((prevcharDict) => {
+            setCharDict(() => {
             const RandInt = Math.floor(Math.random() * levelChars.length);
             return levelChars[RandInt];
             });
