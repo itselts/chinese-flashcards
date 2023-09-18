@@ -1,8 +1,6 @@
 import { useState, ChangeEvent, FormEvent } from 'react';
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import Card from '../components/Card';
-import { Link, useNavigate } from "react-router-dom";
-
-import {useLocation} from "react-router-dom";
 import characters from '../characters.ts'
 
 export default function Play() {

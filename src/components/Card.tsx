@@ -1,7 +1,6 @@
 import { ChangeEvent, FormEvent } from 'react';
 import ReactCardFlip from "react-card-flip";
 import ConfettiExplosion from 'react-confetti-explosion';
-
 import '../styles.css';
 
 interface charDict {
