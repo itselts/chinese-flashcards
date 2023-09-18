@@ -19,7 +19,7 @@ export default function Root() {
     };
   
   return (
-    <body>
+    <div>
       <ImageBar />
       <h1 className='h1--root'>Chinese Flashcards</h1>
       <div>
@@ -27,6 +27,6 @@ export default function Root() {
       </div>
       <PlayButton Level={count.toString()} />
       <Subtext count={count}/>
-    </body>
+    </div>
   )
 }
