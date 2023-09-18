@@ -46,7 +46,7 @@ export default function Play() {
             levelChars.splice(randInt, 1);
             if (levelChars.length === 0) {
                 setLevelChars(characters[level-1])
-                navigate('/chinese-flashcards'); // Redirect to root page
+                navigate('/chinese-flashcards/congratulations'); // Redirect to root page
             }
 
             // Use the functional form of setState to ensure you're working with the latest state
