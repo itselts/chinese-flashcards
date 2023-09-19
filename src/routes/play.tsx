@@ -34,9 +34,6 @@ export default function Play() {
         setError(false);
     }
 
-    console.log(levelChars)
-    console.log(charDict)
-
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         setIsSmallExploding(false)
         event.preventDefault();
@@ -44,17 +41,26 @@ export default function Play() {
         if (formData.pinyin.toLowerCase() === charDict.pinyin && formData.tone === charDict.tone) {
             setIsSmallExploding(true);
             setScore(score+100)
-            setLevelChars(levelChars.filter((_, i) => {return i !== randInt}))
-            console.log(levelChars)
+            
+            // Filter out the selected character from levelChars
+            const updatedLevelChars = levelChars.filter((_, i) => i !== randInt);
 
-            if (levelChars.length === 1) {
+            // If the array is exhausted, we are done.
+            if (updatedLevelChars.length === 0) {
                 navigate('/chinese-flashcards/congratulations'); // Redirect to root page
             }
 
-            setRandInt(Math.floor(Math.random() * levelChars.length))
-            setCharDict(levelChars[randInt-1])
+            // Select a random character from the updatedLevelChars
+            const newRandInt = Math.floor(Math.random() * updatedLevelChars.length);
+            const newCharDict = updatedLevelChars[newRandInt];
+
+            // Update the state variables
+            setLevelChars(updatedLevelChars);
+            setRandInt(newRandInt);
+            setCharDict(newCharDict);
             setFormData({pinyin: "", tone: ""})
             setError(false)
+
         } else {
             setError(true);
         }
