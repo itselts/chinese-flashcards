@@ -27,7 +27,7 @@ export default function Card({ charDict, flip, isSmallExploding, onChange, onHin
         particleCount: 30,
         width: 400,
       };
-    
+
     return (
         <div>
             <ReactCardFlip isFlipped={flip} flipDirection='horizontal'>

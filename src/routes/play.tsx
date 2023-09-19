@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, FormEvent } from 'react';
+import { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import Card from '../components/Card';
 import characters from '../characters.ts'
@@ -31,6 +31,7 @@ export default function Play() {
             console.log("Back!")
         }
         setFlip(!flip)
+        setError(false);
     }
 
     console.log(levelChars)
@@ -52,19 +53,8 @@ export default function Play() {
 
             setRandInt(Math.floor(Math.random() * levelChars.length))
             setCharDict(levelChars[randInt-1])
-            // // Use the functional form of setState to ensure you're working with the latest state
-            // setRandInt(() => {
-            //     const RandInt = Math.floor(Math.random() * levelChars.length);
-            //     return RandInt;
-            // });
-            
-            
-            // setCharDict(() => {
-            // const RandInt = Math.floor(Math.random() * levelChars.length);
-            // return levelChars[RandInt];
-            // });
-
             setFormData({pinyin: "", tone: ""})
+            setError(false)
         } else {
             setError(true);
         }
@@ -76,9 +66,16 @@ export default function Play() {
             return {
                 ...prevFormData, [event.target.name]: event.target.value
             }
-        })
+        });
     }
     console.log(formData)
+
+    useEffect(() => {
+        isSmallExploding && setTimeout(() => {
+            setIsSmallExploding(false);
+        }, 1000)
+    }, [isSmallExploding])
+
     return (
         <>
             <Card charDict={charDict} flip={flip} isSmallExploding={isSmallExploding} onChange={handleChange} onHint={handleHint} onSubmit={handleSubmit} />
