@@ -1,14 +1,14 @@
 interface LevelUpButtonProps {
     count: number
-    handleClick: () => void
-    handleReset: () => void;
+    handleLeft: () => void
+    handleRight: () => void;
 }
 
-export default function LevelUpButton({count, handleClick, handleReset}: LevelUpButtonProps) {
+export default function LevelUpButton({count, handleLeft, handleRight}: LevelUpButtonProps) {
     return (
         <div className="btn-group">
-            <button type="button" onClick={handleClick} className="btn btn-primary"> Level {count} </button>
-            <button type="button" onClick={handleReset} className="btn btn-secondary"> Reset </button>
+            <button type="button" onClick={handleLeft} className="btn btn-primary"> {"\u2190"} </button>
+            <button type="button" onClick={handleRight} className="btn btn-primary"> {"\u2192"} </button>
         </div>
     );
 }
