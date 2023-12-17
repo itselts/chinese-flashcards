@@ -24,7 +24,8 @@ export default function Root() {
     <div>
       <ImageBar />
       <h1 className='h1--root'>Chinese Flashcards</h1>
-      <h2>Topic: {topics[count-1]}</h2>
+      <h2 className="underlined">Topic of choice</h2>
+      <h2>{topics[count-1]}</h2>
       <div>
         <LevelUpButton count={count} handleLeft={handleLeft} handleRight={handleRight}/>
       </div>

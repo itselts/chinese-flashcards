@@ -49,3 +49,7 @@
   padding: 50px;
   font-size: 15px;
 }
+
+.underlined {
+  text-decoration: underline;
+}

@@ -5,6 +5,8 @@ h1 {
 
 .h1--root {
     background-color: aquamarine;
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
 
 body {
