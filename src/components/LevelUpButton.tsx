@@ -4,7 +4,7 @@ interface LevelUpButtonProps {
     handleRight: () => void;
 }
 
-export default function LevelUpButton({count, handleLeft, handleRight}: LevelUpButtonProps) {
+export default function LevelUpButton({handleLeft, handleRight}: LevelUpButtonProps) {
     return (
         <div className="btn-group">
             <button type="button" onClick={handleLeft} className="btn btn-primary"> {"\u2190"} </button>
