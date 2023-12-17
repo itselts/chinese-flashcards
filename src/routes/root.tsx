@@ -3,7 +3,6 @@ import {useState} from 'react'
 import ImageBar from '../components/ImageBar'
 import LevelUpButton from '../components/LevelUpButton'
 import PlayButton from '../components/PlayButton'
-import Subtext from '../components/Subtext'
 import topics from '../topics.ts'
 
 export default function Root() {
@@ -25,12 +24,12 @@ export default function Root() {
       <ImageBar />
       <h1 className='h1--root'>Chinese Flashcards</h1>
       <h2 className="underlined">Topic of choice</h2>
-      <h2>{topics[count-1]}</h2>
+      <h2>{topics[count-1][0]}{topics[count-1][1]}</h2>
       <div>
         <LevelUpButton count={count} handleLeft={handleLeft} handleRight={handleRight}/>
       </div>
       <PlayButton Level={count.toString()} />
-      <Subtext count={count}/>
+      <p className="read-the-docs"> {topics[count-1][2]} </p>
     </div>
   )
 }
