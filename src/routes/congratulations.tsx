@@ -5,6 +5,7 @@ export default function Congratulations() {
         <div>
             <h1>Congratulations!</h1>
             <Link to={'/chinese-flashcards'} className="btn btn-danger">Home</Link>
+            <footer>Retry the topic, or choose another!</footer>
         </div>
     )
 }
